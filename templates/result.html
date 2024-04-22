@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        .prediction {
+            font-size: 24px;
+            font-weight: bold;
+            /* Default text color */
+            color: green; 
+        }
+        .prediction.fall {
+            color: red;
+        }
+        img {
+            width: 100%; /* Adjust this value based on your needs */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prediction Result:</h1>
+    <!-- Conditionally add 'fall' class if prediction is 'Fall' -->
+    <div class="prediction {{ 'fall' if prediction == 'Fall' else '' }}">
+        {{ prediction }}
+    </div>
+    <img src="data:image/jpeg;base64,{{ image_data }}" alt="Uploaded Image">
+    
+    {% if prediction == 'Fall' %}
+    <!-- Play alarm if prediction is 'Fall' -->
+    <audio autoplay>
+        <source src="{{ url_for('static', filename='mixkit-alert-alarm-1005.wav') }}" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+    {% endif %}
+</body>
+</html>

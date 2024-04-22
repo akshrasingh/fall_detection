@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CivGuard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <style>
+        /* Add custom CSS for background image */
+        body {
+            background-image: url('https://wallpapercave.com/wp/wp8013413.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .navbar {
+            background-color: transparent !important;
+        }
+        .navbar-brand {
+            color: rgb(91, 1, 1);
+        }
+        .navbar-nav .nav-link {
+            color: rgb(75, 1, 1) !important;
+        }
+        .navbar-toggler {
+            border-color: rgb(41, 1, 1);
+        }
+        /* Adjustments for search button and toggled navbar items */
+        .navbar-toggler[aria-expanded="true"] .navbar-nav .nav-link,
+        .navbar-toggler[aria-expanded="true"] .navbar-nav .nav-item {
+            background-color: #0a2554;
+            color: white !important;
+        }
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+        .form-inline {
+            margin-right: 10px;
+        }
+        .form-inline .btn {
+            background-color: red;
+            border-color: red;
+            color: white;
+        }
+        /* Custom styles for upload input */
+        #imageUpload {
+            width: 200px;
+            margin: 0 auto;
+            display: block;
+        }
+        .upload-container {
+            margin-top: 240px;
+            margin-right: 750px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-xl bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Anomaly Detector</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/models">Models</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <form class="form-inline" role="search">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</nav>
+<div class="container">
+    <h1 style="color: darkred; text-align: center; margin-top: 80px;">CivGuard</h1>
+    <div style="text-align: center; margin-top: 50px;">
+        <form id="predictForm" action="/predict" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="imageUpload" class="form-label" style="color: #0a2554;">Upload Image</label>
+                <input class="form-control" type="file" name="image" id="imageUpload" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-success">Upload</button>
+        </form>
+    </div>
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
